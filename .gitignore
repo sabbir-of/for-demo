@@ -1,0 +1,6 @@
+/playwright/.cache/
+report.json
+report.zip
+my-ext
+test-result.json
+node_modules/

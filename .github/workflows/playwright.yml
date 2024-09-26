@@ -1,0 +1,58 @@
+name: Publish Report to gh-pages
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch if it's different
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Specify your Node.js version
+
+      - name: Install dependencies
+        run: |
+          npm install          
+
+      - name: Run Playwright Tests
+        run: |
+          npm run test  # Generate the report in HTML format
+      
+      - name: Copy contents of playwright-report
+        if: always()
+        run: |
+              mkdir -p generated-report
+              cp -r ${{ github.workspace }}/playwright-report/* generated-report/
+
+      - name: Publish Report to gh-pages
+        run: |
+          git config --global user.name "sabbir-of"
+          git config --global user.email "sabbir.of@gmail.com"
+          
+          # Clone the target repo
+          git clone --branch gh-pages https://github.com/sabbir-of/playwright-report.git gh-pages-repo/
+
+          # Remove existing files in the target repo to avoid conflicts
+          Remove-Item -Recurse -Force gh-pages-repo/*
+
+          # Copy the report to the target repo
+          cp -r ${{ github.workspace }}/generated-report/* gh-pages-repo/  # Adjust the path to your report
+
+          # Change to the target repo directory
+          cd gh-pages-repo/
+
+          # Check if the gh-pages branch exists; if not, create it
+          git checkout -B gh-pages
+
+          # Add, commit and push changes
+          git add .
+          git commit -m "Update report" || echo "No changes to commit"
+          git push --force https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/sabbir-of/playwright-report.git gh-pages:gh-pages
