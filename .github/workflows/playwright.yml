@@ -44,7 +44,7 @@ jobs:
                 cp -r ${{ github.workspace }}/generated-report/* gh-pages-repo/  
       
                 # Change to the target repo directory
-                cd target-repo
+                cd gh-pages-repo/
       
                 # Add, commit and push changes
                 git add .
