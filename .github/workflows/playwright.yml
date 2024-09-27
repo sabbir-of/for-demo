@@ -51,6 +51,11 @@ jobs:
           git config user.email "sabbir.of@gmail.com"
           git config core.autocrlf true
 
+      - name: Checkout gh-pages Branch
+        working-directory: gh-pages-repo
+        run: |
+            git checkout gh-pages || git checkout -b gh-pages
+
       - name: Copy New Report
         if: always()
         run: |
