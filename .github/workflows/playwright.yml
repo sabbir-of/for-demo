@@ -31,25 +31,12 @@ jobs:
         run: |
           mkdir -p ${{ github.workspace }}/generated-report
           cp -r ${{ github.workspace }}/playwright-report/* ${{ github.workspace }}/generated-report/
-
-      - name: Configure SSH Key
-        if: always()
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Remove Old Host Key
-        if: always()
-        run: ssh-keygen -R github.com || true
-
-      - name: Ensure Known Hosts
-        if: always()
-        run: ssh-keyscan github.com >> ~/.ssh/known_hosts
+      
 
       - name: Clone Target Repository
         if: always()
         run: |
-          git clone git@github.com:sabbir-of/playwright-report.git gh-pages-repo
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/sabbir-of/playwright-report.git gh-pages-repo
           cd gh-pages-repo
           git remote set-url origin git@github.com:sabbir-of/playwright-report.git
           git checkout -B gh-pages
