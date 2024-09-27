@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '00 17 * * 1-5'  # At 17:00 UTC, Monday to Friday
+    - cron: '00 17 * * 1-5'
 
 jobs:
   ui_test:
@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -54,12 +54,11 @@ jobs:
           git remote set-url origin git@github.com:sabbir-of/playwright-report.git
           git checkout -B gh-pages
 
-      # - name: Clean Up Existing Files
-      #   if: always()
-      #   run: |
-      #     cd gh-pages-repo
-      #     git rm -rf .
-      #     Remove-Item -Recurse -Force *
+      - name: Clean Up Existing Files
+        if: always()
+        run: |
+          cd gh-pages-repo
+          git rm -rf . || true
 
       - name: Configure Git User and Handle Line Endings
         if: always()
@@ -79,5 +78,5 @@ jobs:
         working-directory: gh-pages-repo
         run: |
           git add .
-          git commit -m "Update Playwright report"
-          git push -u git@github.com:sabbir-of/playwright-report.git gh-pages --force || git push -u git@github.com:sabbir-of/playwright-report.git --delete gh-pages && git push -u git@github.com:sabbir-of/playwright-report.git gh-pages --force
+          git commit -m "Update Playwright report" || echo "No changes to commit"
+          git push -u origin gh-pages --force
