@@ -62,4 +62,4 @@ jobs:
         run: |
           git add .
           git commit -m "Update Playwright report" || echo "No changes to commit"
-          git push -u git@github.com:sabbir-of/playwright-report.git gh-pages --force || git push -u git@github.com:sabbir-of/playwright-report.git --delete gh-pages && git push -u git@github.com:sabbir-of/playwright-report.git gh-pages --force
+          git push -u gh-pages --force
