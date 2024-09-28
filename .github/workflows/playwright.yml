@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: '00 17 * * 1-5'
+  
 
 jobs:
   ui_test:
