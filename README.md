@@ -11,10 +11,10 @@ Here is step-by-step guide on creating Playwright tests using Behavior-Driven De
 
 ### Step 1: Install Playwright
 
-Run the following command to install Playwright:
+Run the following command to install dependencies:
 
 ```bash
-npm install playwright
+npm install
 ```
 
 ## Creating a Page Object
@@ -91,6 +91,15 @@ If you're working with an existing step file, you can skip this step. Otherwise,
 
 When('the User tries to login with {string} as username and {string} as password', async ({ loginPage }, username: string, password: string) => {
     await loginPage.doLogin(username, password);
+});
+
+Then('copyright text in footer should be visible', async ({ productsPage }) => {
+    await expect(productsPage.footer.copyrightText).toBeVisible();
+});
+
+Then('the copyright text contents should be correct', async ({ productsPage }) => {
+    const textContent = await productsPage.footer.getCopyrightTextContent();
+    expect(textContent).toEqual('© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
 });
 ```
 
