@@ -82,7 +82,7 @@ export default defineConfig({
     permissions: ["microphone", "camera", "clipboard-read", "clipboard-write"],
     browserName: "chromium",
     channel: "msedge",
-    headless: process.env.CI ? true : false,
+    headless: process.env.CI ? true : !false,
     viewport: { width: 1700, height: 920 },
     ignoreHTTPSErrors: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */

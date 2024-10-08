@@ -35,6 +35,7 @@ When('the user clicks Log out from hamburger menu', async ({ productsPage }) => 
 
 Then('the user must be logged out', async ({ loginPage }) => {
     await expect(loginPage.loginButton).toBeVisible();
+    
 });
 
 // 1. Missing step definition for "feature\products.feature:9:5"

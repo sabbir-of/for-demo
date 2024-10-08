@@ -30,9 +30,15 @@ export class LoginPage extends BasePage {
      * We suggest don't store passwords in the code
      */
     public async doLogin(userName: string, password: string) {
-        await this.userName.fill(userName);
-        await this.password.fill(password);
-        await this.loginButton.click();
+        try {
+            await this.userName.fill(userName);
+            await this.password.fill(password);
+            await this.loginButton.click();
+        } catch (error) {
+            throw new Error(`Login functionality does not work properly | Error occar ${error}`)
+            
+        }
+        
         
     }
 
