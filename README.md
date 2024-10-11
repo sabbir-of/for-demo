@@ -137,3 +137,22 @@ npm run test:admin
 
 This command will execute the tests using the admin storage state. Check your `playwright.config.ts` file for all configuration settings.
 
+
+
+## Storage State Setup Process
+
+### Step 1: 
+I have created an `authSetup` file.  
+Inside this file, I have set up `admin`, `CLO`, `credit`, `loanAdmin`, and `RM` setup files. After the execution of the `admin` setup file, the admin storage state is stored in a JSON file.
+
+### Step 2: 
+In the `playwright.config.ts` file, I have created dependencies for `admin`, `CLO`, `credit`, `loanAdmin`, and `RM` and shared these dependencies inside the project.  
+For example, when running `admin` test cases, the `admin` dependency (`admin.setup.ts`) should run first.
+
+### Step 3: 
+Go to the `package.json` file.  
+Inside the scripts, I have added custom commands for `admin` and `loan` tag, so I can run tests with the command:  
+
+```bash
+npm run test:admin
+```
