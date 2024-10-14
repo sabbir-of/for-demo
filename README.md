@@ -156,3 +156,85 @@ Inside the scripts, I have added custom commands for `admin` and `loan` tag, so 
 ```bash
 npm run test:admin
 ```
+
+
+
+### **Test Plan for Story Implementation with Smoke Testing**
+
+#### **Objective:**
+To ensure that the story is tested manually and through automation, including smoke tests, and that all related documentation and reports are provided.
+
+---
+
+### **1. Manual Testing and Documentation**
+   - **Objective:** Validate the functionality of the user story manually, ensuring all scenarios meet the acceptance criteria.
+   - **Steps:**
+     1. Review the user story, including its requirements and acceptance criteria.
+     2. Conduct **manual tests** for all scenarios:
+        - Positive cases
+        - Negative cases
+        - Edge cases
+     3. Identify and document any bugs or issues encountered during testing.
+     4. Create the following documentation:
+        - Test scenarios and detailed test cases
+        - Steps for each test case execution
+        - Results of each test case (pass/fail)
+        - List of any issues or defects logged during testing
+   - **Deliverables:**
+     - Manual test case document
+     - Issue/Defect log (if any)
+     - Updated user story with testing results and validations
+
+---
+
+### **2. Automation Test Script Creation (Including Smoke Testing)**
+   - **Objective:** Convert manual test scenarios into automated test scripts, including smoke tests to verify critical functionalities.
+   - **Steps:**
+     1. Review the manual test cases and identify the high-priority cases for **smoke testing**.
+     2. Develop **automated test scripts** covering:
+        - All scenarios from the manual test cases.
+        - A **smoke test suite** focusing on the critical paths of the system (e.g., login, core functionalities).
+     3. Ensure all test cases are automated, and that the smoke test suite is optimized for quick execution.
+     4. Validate the correctness of the automation scripts by running them in a local environment.
+   - **Deliverables:**
+     - Automation test scripts
+     - Smoke test suite
+     - Logs and execution results for the initial test run
+
+---
+
+### **3. Automation Test Execution**
+   - **Objective:** Execute the automated test scripts, including smoke tests, on the build when it’s ready for staging (STG) or production (PROD) deployment.
+   - **Steps:**
+     1. Trigger the **smoke test suite** immediately after the deployment to STG/PROD to validate the critical functionalities.
+     2. Once the smoke tests pass, execute the **full automation test suite** to cover all scenarios.
+     3. Monitor and log the results, checking for any failed test cases or discrepancies.
+     4. Report any bugs or issues identified during execution.
+   - **Deliverables:**
+     - Test execution logs (for smoke and full test suites)
+     - Defects/Issues log (if found)
+     - Detailed results for STG/PROD testing
+
+---
+
+### **4. Reporting and Communication**
+   - **Objective:** Provide detailed reports and summaries of the automation execution results.
+   - **Steps:**
+     1. Compile results from both the **smoke tests** and **full automation suite**.
+     2. Generate a **test execution report**, including:
+        - Number of test cases executed
+        - Pass/Fail status for each test case
+        - Defects or issues found (if any)
+        - Screenshots or logs from failed test cases (if applicable)
+     3. Share the report with stakeholders (QA lead, product owner, development team, etc.).
+     4. Prepare a **summary report** highlighting:
+        - Critical defects (if any)
+        - Test coverage and execution stats
+        - Results of smoke and full test suites
+   - **Deliverables:**
+     - Test execution report
+     - Automation test summary
+     - Defects/issues report (if any)
+
+---
+
